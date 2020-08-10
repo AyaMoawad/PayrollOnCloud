@@ -36,6 +36,8 @@
 		<property name="user" value="PAYROLLUSER" />
 		<property name="password" value="PayrollUser123" />
 
+
+
 		<!-- these are connection pool properties for C3P0 -->
 		<property name="minPoolSize" value="5" />
 		<property name="maxPoolSize" value="20" />
