@@ -74,7 +74,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "http://localhost:8080/Payroll/lookUps/getInputVals",
+        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/lookUps/getInputVals",
 
         success: function (response) {
             inputVals = response;
@@ -96,7 +96,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "http://localhost:8080/Payroll/lookUps/getIntervals",
+        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/lookUps/getIntervals",
         success: function (response) {
             intervals = response;
             for (var i = 0; i < intervals.length; i++) {
@@ -118,7 +118,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "http://localhost:8080/Payroll/lookUps/gettaxes",
+        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/lookUps/gettaxes",
         success: function (response) {
             Taxes = response;
             for (var i = 0; i < Taxes.length; i++) {
@@ -141,7 +141,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "http://localhost:8080/Payroll/lookUps/getTypes",
+        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/lookUps/getTypes",
         success: function (response) {
             types = response;
             for (var i = 0; i < types.length; i++) {
@@ -247,7 +247,7 @@ var controller = (function () {
                         'Content-Type': 'application/json'
                     },
                     type: "post",
-                    url: "http://localhost:8080/Payroll/payType/addPayType",
+                    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/payType/addPayType",
                     data: formData,
                     success: function (response) {
                         $('#ResultOfPayTypeCreation').modal('show');

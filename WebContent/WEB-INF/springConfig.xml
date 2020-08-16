@@ -36,8 +36,6 @@
 		<property name="user" value="PAYROLLUSER" />
 		<property name="password" value="PayrollUser123" />
 
-
-
 		<!-- these are connection pool properties for C3P0 -->
 		<property name="minPoolSize" value="5" />
 		<property name="maxPoolSize" value="20" />
@@ -52,12 +50,21 @@
 		<property name="dataSource" ref="myDataSource" />
 		<property name="packagesToScan"
 			value="com.entities" />
+		
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.SAPDBDialect</prop>
+				
+				<prop key="hibernate.dialect">org.hibernate.dialect.HANAColumnStoreDialect</prop>
+				<prop key="hibernate.connection.driver_class">org.hibernate.dialect.Dialect</prop>
+				
+				<prop key="hibernate.connection.url">jdbc:sap://vadbirn.nwtrial.od.sap.biz:30152/?encrypt=true</prop>
+				<prop key="hibernate.connection.username">PAYROLLUSER</prop>
+				<prop key="hibernate.connection.password">PayrollUser123</prop>	
+				
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
   
+  				
 			</props>
 		</property>
 	</bean>

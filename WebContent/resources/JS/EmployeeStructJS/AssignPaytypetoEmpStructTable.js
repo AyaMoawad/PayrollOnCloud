@@ -19,7 +19,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get", //send it through get method
-        url: "http://localhost:8080/Payroll/employeeStructure/showEmployeeStructure",
+        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/showEmployeeStructure",
         data: {
             code: code
         },
@@ -35,7 +35,7 @@ var controller = (function () {
                         'Content-Type': 'application/json'
                     },
                     type: "get", //send it through get method
-                    url: "http://localhost:8080/Payroll/payType/getAllPayTypes",
+                    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/payType/getAllPayTypes",
                     success: function (response) {
                         if (response == null || response == '') {
                             payTypes = null;
@@ -113,7 +113,7 @@ var controller = (function () {
                     },
                     type: "POST",
                     async: false,
-                    url: "http://localhost:8080/Payroll/employeeStructure/getAllPaytypesAssignedToEmpStruct",
+                    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/getAllPaytypesAssignedToEmpStruct",
                     data: EmpCodes,
                     success: function (response) {
                         var theAssignedPayTypes;
@@ -301,7 +301,7 @@ var controller = (function () {
                     'Content-Type': 'application/json'
                 },
                 type: "POST",
-                url: "http://localhost:8080/Payroll/employeeStructure/removePaytypeFromEmpStuct",
+                url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/removePaytypeFromEmpStuct",
                 data: data,
                 success: function (response) {
                     $.ajax({
@@ -310,7 +310,7 @@ var controller = (function () {
                             'Content-Type': 'application/json'
                         },
                         type: "POST",
-                        url: "http://localhost:8080/Payroll/employeeStructure/assignPaytypeToEmployeeStruct",
+                        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/employeeStructure/assignPaytypeToEmployeeStruct",
                         data: formData,
                         success: function (response) {
                             $('#ResultOfEmployeeStructAssignment').modal('show');

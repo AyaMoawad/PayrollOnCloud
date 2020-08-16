@@ -85,7 +85,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get", //send it through get method
-        url: "http://localhost:8080/Payroll/employeeStructure/showEmployeeStructure",
+        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/showEmployeeStructure",
         data: {
             code: code
         },

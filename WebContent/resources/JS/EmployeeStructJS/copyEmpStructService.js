@@ -81,7 +81,7 @@
               'Content-Type': 'application/json'
           },
           type: "POST",
-          url:"http://localhost:8080/Payroll/employeeStructure/copyEmployeeStructure?code="+code,
+          url:"https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/copyEmployeeStructure?code="+code,
           data :formData,
           success: function (response) {
            
@@ -342,7 +342,7 @@
     }
     };
   
-    xhttp.open("POST", "http://localhost:8080/Payroll/employeeStructure/copyEmployeeStructure", true);
+    xhttp.open("POST", "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/copyEmployeeStructure", true);
     xhttp.setRequestHeader("Content-type", "application/json");
   
     xhttp.send(JSON.stringify(empObjectsArray));

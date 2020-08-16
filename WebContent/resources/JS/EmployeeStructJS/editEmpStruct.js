@@ -7,7 +7,7 @@ $.ajax({
         'Content-Type': 'application/json'
     },
     type: "get", 
-    url: "http://localhost:8080/Payroll/employeeStructure/getAllTheEmployeeStructures",
+    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/getAllTheEmployeeStructures",
     success: function (response) {
         if (response.theChain == null || response.theChain=='') {
             $('#chooseEmpStruct').attr('hidden', '');

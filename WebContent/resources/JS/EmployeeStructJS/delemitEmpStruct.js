@@ -96,7 +96,7 @@ var controller = (function () {
                     'Content-Type': 'application/json'
                 },
                 type: "get", 
-                url: "http://localhost:8080/Payroll/employeeStructure/delemitEmployeeStructure",
+                url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/delemitEmployeeStructure",
                 data: {
                     code: code,
                     endDate:endDate

@@ -84,7 +84,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "http://localhost:8080/Payroll/employeeStructure/getEmployeeStructureElement",
+        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/getEmployeeStructureElement",
         data: {
             code:code
         },
@@ -151,7 +151,7 @@ var controller = (function () {
                     'Content-Type': 'application/json'
                 },
                 type: "put",
-                url:"http://localhost:8080/Payroll/employeeStructure/updateEmployeeStructure",
+                url:"https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/updateEmployeeStructure",
                 data :formData,
                 success: function (response) {
                     $('#success_msg').removeAttr('hidden');

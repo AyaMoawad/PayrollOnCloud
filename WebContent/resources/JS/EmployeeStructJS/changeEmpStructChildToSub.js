@@ -15,7 +15,7 @@ $.ajax({
         'Content-Type': 'application/json'
     },
     type: "get",
-    url: "http://localhost:8080/Payroll/employeeStructure/getEmployeeStructureElement",
+    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/getEmployeeStructureElement",
     data: {
         code: code
     },
@@ -33,7 +33,7 @@ $.ajax({
                 'Content-Type': 'application/json'
             },
             type: "get",
-            url: "http://localhost:8080/Payroll/employeeStructure/getEmployeeStructureElement?code="+model.parentCode,
+            url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/getEmployeeStructureElement?code="+model.parentCode,
             success: function (response) {
                 var parentModel = response.theModel;
                 var empObject = {
@@ -136,7 +136,7 @@ $.ajax({
                 'Content-Type': 'application/json'
             },
             type: "POST",
-            url: "http://localhost:8080/Payroll/employeeStructure/chaningChildToSubParent?code=" + code,
+            url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/chaningChildToSubParent?code=" + code,
             data: formData,
             success: function (response) {
 
@@ -350,7 +350,7 @@ function sendToDB() {
         }
     };
 
-    xhttp.open("POST", "http://localhost:8080/Payroll/employeeStructure/chaningChildToSubParent?code=" + code, true);
+    xhttp.open("POST", "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/chaningChildToSubParent?code=" + code, true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     for (var i = 0; i < empObjectsArray.length; i++) {
