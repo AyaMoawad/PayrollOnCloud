@@ -19,7 +19,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get", //send it through get method
-        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/showEmployeeStructure",
+        url: "http://localhost:8080/Payroll/employeeStructure/showEmployeeStructure",
         data: {
             code: code
         },
@@ -35,12 +35,15 @@ var controller = (function () {
                         'Content-Type': 'application/json'
                     },
                     type: "get", //send it through get method
-                    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/payType/getAllPayTypes",
+                    url: "http://localhost:8080/Payroll/payType/getAllPayTypes",
                     success: function (response) {
                         if (response == null || response == '') {
                             payTypes = null;
                         } else {
                             payTypes = response;
+                            for (var p = 0; p < payTypes.length; p++) {
+                                $("#EmpStructTable>thead>tr").append("<th>Paytype/"+payTypes[p].code+"</th>");
+                            }
                         }
                         $("tbody").remove();
                         $('#EmpStructTable').append($('<tbody> <tr> </tr> </tbody>'));
@@ -83,17 +86,17 @@ var controller = (function () {
             var cell5 = row.insertCell(4); //payTypes check boxes XD
 
             if (arrangedArray[counter].hasParent == false) {
-                cell1.innerHTML = "Parent";
+                cell2.innerHTML = "Parent";
                 cell3.innerHTML = "N/A";
                 row.setAttribute('class', 'parent');
             } else if (arrangedArray[counter].hasChild == true) {
-                cell1.innerHTML = "SubParent";
+                cell2.innerHTML = "SubParent";
                 cell3.innerHTML = arrangedArray[counter].parentCode;
             } else {
-                cell1.innerHTML = "Child";
+                cell2.innerHTML = "Child";
                 cell3.innerHTML = arrangedArray[counter].parentCode;
             }
-            cell2.innerHTML = arrangedArray[counter].code;
+            cell1.innerHTML = arrangedArray[counter].code;
             cell4.innerHTML = arrangedArray[counter].name;
 
             if (payTypes == null) {
@@ -105,7 +108,6 @@ var controller = (function () {
                 arrayOfEmpCodes = new Array();
                 arrayOfEmpCodes.push(arrangedArray[counter].code);
                 EmpCodes = JSON.stringify(arrayOfEmpCodes);
-               
                 $.ajax({
                     headers: {
                         'Accept': 'application/json',
@@ -113,23 +115,24 @@ var controller = (function () {
                     },
                     type: "POST",
                     async: false,
-                    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/getAllPaytypesAssignedToEmpStruct",
+                    url: "http://localhost:8080/Payroll/employeeStructure/getAllPaytypesAssignedToEmpStruct",
                     data: EmpCodes,
                     success: function (response) {
                         var theAssignedPayTypes;
                         theAssignedPayTypes == new Array();
-        
                         theAssignedPayTypes = response;
                         for (var p = 0; p < payTypes.length; p++) {
                             if (theAssignedPayTypes[0].code.localeCompare(row.id) == 0
                                 && theAssignedPayTypes[0].payTypeCodes.includes(payTypes[p].code)) {
-                                payTypesCheckBoxs += "<label><input checked id=\"" + payTypes[p].code + "-" + row.id + "\"" + "type=\"checkbox\"  autocomplete=\"off\"> " + payTypes[p].code + "</label> ";
+                                    var cell5 = row.insertCell(4+p);
+                                    cell5.innerHTML= "<input checked id=\"" + payTypes[p].code + "-" + row.id + "\"" + "type=\"checkbox\"  autocomplete=\"off\"> " ;
                             } else {
-                                payTypesCheckBoxs += "<label><input id=\"" + payTypes[p].code + "-" + row.id + "\"" + "type=\"checkbox\"  autocomplete=\"off\"> " + payTypes[p].code + "</label> ";
+                                var cell5 = row.insertCell(4+p);
+                                cell5.innerHTML= "<input id=\"" + payTypes[p].code + "-" + row.id + "\"" + "type=\"checkbox\"  autocomplete=\"off\"> "  ;
                             }
+                            
                         }
-                        cell5.innerHTML = payTypesCheckBoxs;
-                        payTypesCheckBoxs = "";
+                        $(row).find('td:last-child').remove();
                     },
                     error: function (xhr) {
                     }
@@ -301,7 +304,7 @@ var controller = (function () {
                     'Content-Type': 'application/json'
                 },
                 type: "POST",
-                url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/removePaytypeFromEmpStuct",
+                url: "http://localhost:8080/Payroll/employeeStructure/removePaytypeFromEmpStuct",
                 data: data,
                 success: function (response) {
                     $.ajax({
@@ -310,7 +313,7 @@ var controller = (function () {
                             'Content-Type': 'application/json'
                         },
                         type: "POST",
-                        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/employeeStructure/assignPaytypeToEmployeeStruct",
+                        url: "http://localhost:8080/Payroll/employeeStructure/assignPaytypeToEmployeeStruct",
                         data: formData,
                         success: function (response) {
                             $('#ResultOfEmployeeStructAssignment').modal('show');

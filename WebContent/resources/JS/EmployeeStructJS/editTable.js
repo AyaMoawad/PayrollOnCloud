@@ -317,16 +317,26 @@ var controller = (function () {
             $('#EmpStructTable').removeAttr('hidden');
             for (var c = 0; c < arrangedArray.length; c++) {
                 var startDateString = arrangedArray[c].startDate;
+                var endDateString = arrangedArray[c].endDate;
+
                 var sday = startDateString.slice(0, 3);
                 var smo = startDateString.slice(3, 6);
                 var syear = startDateString.slice(6, 11);
+
+                var eday = endDateString.slice(0, 3);
+                var emo = endDateString.slice(3, 6);
+                var eyear = endDateString.slice(6, 11);
+
                 var modifiedStartDate = new Date(smo + '/' + sday + '/' + syear);
+                var modifiedEndDate = new Data(emo + '/' + eday + '/' + eyear);
                 var validDate = $("#valid_date").val();
+
                 var vday = validDate.slice(0, 3);
                 var vmo = validDate.slice(3, 6);
                 var vyear = validDate.slice(6, 11);
+
                 var modifiedValidDate = new Date(vmo + '/' + vday + '/' + vyear);
-                if (modifiedStartDate < modifiedValidDate) {
+                if ((modifiedValidDate >= modifiedStartDate) && (modifiedValidDate <= modifiedEndDate) ) {
                     var trCode = arrangedArray[c].code;
                     $('#' + trCode).remove();
                 }
@@ -336,6 +346,7 @@ var controller = (function () {
                 $('#tableIsEmptyMSG').removeAttr('hidden','');
             }
         });
+        
 
         $("#modalOkButton").click(function (e) {
             location = 'editEmpStruct.html';
