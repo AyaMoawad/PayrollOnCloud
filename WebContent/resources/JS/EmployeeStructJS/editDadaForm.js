@@ -84,7 +84,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/getEmployeeStructureElement",
+        url: location.href.split('/Payroll')[0]+"/Payroll/employeeStructure/getEmployeeStructureElement",
         data: {
             code:code
         },
@@ -151,7 +151,7 @@ var controller = (function () {
                     'Content-Type': 'application/json'
                 },
                 type: "put",
-                url:"https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/updateEmployeeStructure",
+                url:location.href.split('/Payroll')[0]+"/Payroll/employeeStructure/updateEmployeeStructure",
                 data :formData,
                 success: function (response) {
                     $('#success_msg').removeAttr('hidden');

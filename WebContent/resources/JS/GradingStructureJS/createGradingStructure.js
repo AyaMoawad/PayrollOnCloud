@@ -70,7 +70,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/payType/getAllPayTypes",
+        url: "http://localhost:8080/Payroll/payType/getAllPayTypes",
 
         success: function (response) {
             payTypes = response;
@@ -224,7 +224,7 @@ var controller = (function () {
                         'Content-Type': 'application/json'
                     },
                     type: "post",
-                    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/GradingStruct/addGradingAndSalary",
+                    url: "http://localhost:8080/Payroll/GradingStruct/addGradingAndSalary",
                     data: formData,
                     success: function (response) {
                         $('#ResultOfGradingStructureCreation').modal('show');

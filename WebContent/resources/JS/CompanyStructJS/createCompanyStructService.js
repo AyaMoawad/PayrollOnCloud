@@ -74,7 +74,7 @@
 			  'Content-Type': 'application/json'
 		  },
 		  type: "POST",
-		  url:"https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/companyStructure/addCompanyStructure",
+		  url:"http://localhost:8080/Payroll/companyStructure/addCompanyStructure",
 		  data :formData,
 		  success: function (response) {
 		   
@@ -283,7 +283,7 @@
 	}
 	};
   
-	xhttp.open("POST", "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/companyStructure/addCompanyStructure", true);
+	xhttp.open("POST", "http://localhost:8080/Payroll/companyStructure/addCompanyStructure", true);
 	xhttp.setRequestHeader("Content-type", "application/json");
   
 	xhttp.send(JSON.stringify(companyObjectsArray));

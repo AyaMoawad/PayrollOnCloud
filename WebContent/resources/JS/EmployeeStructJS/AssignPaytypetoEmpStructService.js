@@ -9,7 +9,7 @@ $.ajax({
         'Content-Type': 'application/json'
     },
     type: "get", 
-    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/getAllTheEmployeeStructures",
+    url: location.href.split('/Payroll')[0]+"/Payroll/employeeStructure/getAllTheEmployeeStructures",
     success: function (response) {
         if (response.theChain == null || response.theChain=='') {
             $('#chooseEmpStruct').attr('hidden', '');
@@ -27,14 +27,14 @@ $.ajax({
                 var cell2 = row.insertCell(1);
                 var cell3 = row.insertCell(2);
                 if (arrayOfTotalChain[counter].hasParent == false) {
-                    cell1.innerHTML = "Parent";
+                    cell3.innerHTML = "Parent";
                 } else if (arrayOfTotalChain[counter].hasChild == true) {
-                    cell1.innerHTML = "SubParent";
+                    cell3.innerHTML = "SubParent";
                 } else {
-                    cell1.innerHTML = "Child";
+                    cell3.innerHTML = "Child";
                 }
-                cell2.innerHTML = arrayOfTotalChain[counter].code;
-                cell3.innerHTML = arrayOfTotalChain[counter].name;
+                cell1.innerHTML = arrayOfTotalChain[counter].code;
+                cell2.innerHTML = arrayOfTotalChain[counter].name;
             } $('#EmpStructTable').removeAttr('hidden');
         }
 
@@ -42,6 +42,27 @@ $.ajax({
     error: function (xhr) {
     }
 });
+
+function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("EmpStructTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
 
 $(document).ready(function () {
         var code;
@@ -52,11 +73,11 @@ $(document).ready(function () {
                 newId = $(this).attr('id');
                 if (oldID != null) {
                     theId = '#' + oldID;
-                    $(theId).removeClass('bg-success');
+                    $(theId).removeClass('bg-warning');
                 }
                 oldID = newId;
                 console.log(oldID);
-                $(this).addClass('bg-success');
+                $(this).addClass('bg-warning');
             });
         });
         

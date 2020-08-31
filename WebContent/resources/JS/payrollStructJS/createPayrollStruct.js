@@ -77,7 +77,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/lookUps/getCountries",
+        url: "http://localhost:8080/Payroll/lookUps/getCountries",
 
         success: function (response) {
             countries = response;
@@ -99,7 +99,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/lookUps/getIntervals",
+        url: "http://localhost:8080/Payroll/lookUps/getIntervals",
         success: function (response) {
             intervals = response;
             for (var i = 0; i < intervals.length; i++) {
@@ -120,7 +120,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/lookUps/getCurrencies",
+        url: "http://localhost:8080/Payroll/lookUps/getCurrencies",
         success: function (response) {
             currencies = response;
             for (var i = 0; i < currencies.length; i++) {
@@ -142,7 +142,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get",
-        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/lookUps/getPayrollValuations",
+        url: "http://localhost:8080/Payroll/lookUps/getPayrollValuations",
         success: function (response) {
             payrollValuation = response;
             for (var i = 0; i < payrollValuation.length; i++) {
@@ -274,7 +274,7 @@ var controller = (function () {
                         'Content-Type': 'application/json'
                     },
                     type: "post",
-                    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/PayrollStruct/addPayrollStruct",
+                    url: "http://localhost:8080/Payroll/PayrollStruct/addPayrollStruct",
                     data: formData,
                     success: function (response) {
                         $('#ResultOfpayrollStructCreation').modal('show');

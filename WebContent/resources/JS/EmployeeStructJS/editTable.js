@@ -85,7 +85,7 @@ var controller = (function () {
             'Content-Type': 'application/json'
         },
         type: "get", //send it through get method
-        url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/showEmployeeStructure",
+        url: location.href.split('/Payroll')[0]+"/Payroll/employeeStructure/showEmployeeStructure",
         data: {
             code: code
         },
@@ -107,19 +107,29 @@ var controller = (function () {
                 $('#EmpStructTable').append($('<tbody> <tr> </tr> </tbody>'));
                 showTheEmpStructTable();
                 $('#EmpStructTable').removeAttr('hidden');
-                for (var a = 0; a < arrangedArray.length; a++) {
-                    var startDateString = arrangedArray[a].startDate;
+                for (var c = 0; c < arrangedArray.length; c++) {
+                    var startDateString = arrangedArray[c].startDate;
                     var sday = startDateString.slice(0, 3);
                     var smo = startDateString.slice(3, 6);
                     var syear = startDateString.slice(6, 11);
                     var modifiedStartDate = new Date(smo + '/' + sday + '/' + syear);
+    
+                    var endDateString = arrangedArray[c].endDate;
+                    var eday = endDateString.slice(0, 3);
+                    var emo = endDateString.slice(3, 6);
+                    var eyear = endDateString.slice(6, 11);
+                    var modifiedEndDate = new Date(emo + '/' + eday + '/' + eyear);
+    
                     var validDate = $("#valid_date").val();
-                    var  vday = validDate.slice(0, 3);
+                    var vday = validDate.slice(0, 3);
                     var vmo = validDate.slice(3, 6);
                     var vyear = validDate.slice(6, 11);
                     var modifiedValidDate = new Date(vmo + '/' + vday + '/' + vyear);
-                    if (modifiedStartDate < modifiedValidDate) {
-                        var trCode = arrangedArray[a].code;
+    
+                    if (((modifiedStartDate > modifiedValidDate) && (modifiedEndDate <
+                        modifiedValidDate)) || (modifiedStartDate > modifiedValidDate)  ||(modifiedEndDate <
+                            modifiedValidDate) ) {
+                        var trCode = arrangedArray[c].code;
                         $('#' + trCode).remove();
                     }
                 }
@@ -181,8 +191,8 @@ var controller = (function () {
             var cell6 = row.insertCell(5);
             var cell7 = row.insertCell(6);
             if (arrangedArray[counter].hasParent == false) {
-                cell1.innerHTML = "Parent";
-                cell3.innerHTML = "N/A";
+                cell3.innerHTML = "Parent";
+                cell4.innerHTML = "N/A";
                 row.setAttribute('class', 'parent');
                 var theHrefForCopy = 'copyEmpStructData.html?code='
                     + arrangedArray[counter].code
@@ -201,7 +211,7 @@ var controller = (function () {
                     +"<a href=" +theHrefForAddSub+ ">Add </a>" ;
                     row.removeAttribute('hidden');
             } else if (arrangedArray[counter].hasChild == true) {
-                cell1.innerHTML = "SubParent";
+                cell3.innerHTML = "SubParent";
                 cell7.innerHTML = "<a href=" + theHrefForEdit
                     + ">Edit    </a>" + "<a href="
                     + theHrefFordelemit + ">   Delimit</a>"
@@ -209,18 +219,18 @@ var controller = (function () {
                     + ">   Delete</a>"
                     +"<a href=" +theHrefForAddSub
                     + ">Add</a>" ;       
-                    cell3.innerHTML = arrangedArray[counter].parentCode;        
+                    cell4.innerHTML = arrangedArray[counter].parentCode;        
             } else {
-                cell1.innerHTML = "Child";
+                cell3.innerHTML = "Child";
                 cell7.innerHTML = "<a href=" + theHrefForEdit
                     + ">Edit    </a>" + "<a href="
                     + theHrefFordelemit + ">   Delimit</a>"
                     + "<a href=" + theHrefFordelete
                     + ">   Delete</a>";
-                    cell3.innerHTML = arrangedArray[counter].parentCode;
+                    cell4.innerHTML = arrangedArray[counter].parentCode;
             }
-            cell2.innerHTML = arrangedArray[counter].code;
-            cell4.innerHTML = arrangedArray[counter].name;
+            cell1.innerHTML = arrangedArray[counter].code;
+            cell2.innerHTML = arrangedArray[counter].name;
             cell5.innerHTML = arrangedArray[counter].startDate;
             cell6.innerHTML = arrangedArray[counter].endDate;
 
@@ -317,26 +327,26 @@ var controller = (function () {
             $('#EmpStructTable').removeAttr('hidden');
             for (var c = 0; c < arrangedArray.length; c++) {
                 var startDateString = arrangedArray[c].startDate;
-                var endDateString = arrangedArray[c].endDate;
-
                 var sday = startDateString.slice(0, 3);
                 var smo = startDateString.slice(3, 6);
                 var syear = startDateString.slice(6, 11);
+                var modifiedStartDate = new Date(smo + '/' + sday + '/' + syear);
 
+                var endDateString = arrangedArray[c].endDate;
                 var eday = endDateString.slice(0, 3);
                 var emo = endDateString.slice(3, 6);
                 var eyear = endDateString.slice(6, 11);
+                var modifiedEndDate = new Date(emo + '/' + eday + '/' + eyear);
 
-                var modifiedStartDate = new Date(smo + '/' + sday + '/' + syear);
-                var modifiedEndDate = new Data(emo + '/' + eday + '/' + eyear);
                 var validDate = $("#valid_date").val();
-
                 var vday = validDate.slice(0, 3);
                 var vmo = validDate.slice(3, 6);
                 var vyear = validDate.slice(6, 11);
-
                 var modifiedValidDate = new Date(vmo + '/' + vday + '/' + vyear);
-                if ((modifiedValidDate >= modifiedStartDate) && (modifiedValidDate <= modifiedEndDate) ) {
+
+                if (((modifiedStartDate > modifiedValidDate) && (modifiedEndDate <
+                    modifiedValidDate)) || (modifiedStartDate > modifiedValidDate)  ||(modifiedEndDate <
+                        modifiedValidDate) ) {
                     var trCode = arrangedArray[c].code;
                     $('#' + trCode).remove();
                 }
@@ -346,14 +356,10 @@ var controller = (function () {
                 $('#tableIsEmptyMSG').removeAttr('hidden','');
             }
         });
-        
 
         $("#modalOkButton").click(function (e) {
             location = 'editEmpStruct.html';
         });
-
-        
-
 
     });
 })();

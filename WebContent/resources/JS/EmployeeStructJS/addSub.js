@@ -13,7 +13,8 @@ $.ajax({
         'Content-Type': 'application/json'
     },
     type: "get",
-    url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/getEmployeeStructureElement",
+    url: location.href.split('/Payroll')[0]
+    +"/Payroll/employeeStructure/getEmployeeStructureElement",
     data: {
         code: code
     },
@@ -114,7 +115,7 @@ $.ajax({
                 'Content-Type': 'application/json'
             },
             type: "POST",
-            url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/addEmployeeStructure",
+            url: location.href.split('/Payroll')[0]+"/Payroll/employeeStructure/addEmployeeStructure",
             data: formData,
             success: function (response) {
 
@@ -323,7 +324,7 @@ function sendToDB() {
         }
     };
 
-    xhttp.open("POST", "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/addEmployeeStructure", true);
+    xhttp.open("POST", location.href.split('/Payroll')[0]+"/Payroll/employeeStructure/addEmployeeStructure", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     for (var i = 0; i < empObjectsArray.length; i++) {

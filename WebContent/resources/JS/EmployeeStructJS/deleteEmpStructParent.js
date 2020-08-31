@@ -27,7 +27,7 @@ var controller = (function () {
                     'Content-Type': 'application/json'
                 },
                 type: "get", 
-                url: "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/deleteEmployeeStructure",
+                url: location.href.split('/Payroll')[0]+"/Payroll/employeeStructure/deleteEmployeeStructure",
                 data: {
                     code: code
                 },

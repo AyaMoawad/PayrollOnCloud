@@ -32,7 +32,7 @@
 		class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.sap.cloud.db.jdbc" />
-		<property name="jdbcUrl" value="jdbc:sap://vadbirw.nwtrial.od.sap.biz:30113/?autocommit=false"/>
+		<property name="jdbcUrl" value="jdbc:sap://vadbirn.nwtrial.od.sap.biz:30152/?autocommit=false"/>
 		<property name="user" value="PAYROLLUSER" />
 		<property name="password" value="PayrollUser123" />
 		
@@ -58,7 +58,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.HANAColumnStoreDialect</prop>
 				<prop key="hibernate.connection.driver_class">org.hibernate.dialect.Dialect</prop>
 				
-				<prop key="hibernate.connection.url">jdbc:sap://vadbirw.nwtrial.od.sap.biz:30113/?encrypt=true</prop>
+				<prop key="hibernate.connection.url">jdbc:sap://vadbirn.nwtrial.od.sap.biz:30152/?encrypt=true</prop>
 				<prop key="hibernate.connection.username">PAYROLLUSER</prop>
 				<prop key="hibernate.connection.password">PayrollUser123</prop>	
 				

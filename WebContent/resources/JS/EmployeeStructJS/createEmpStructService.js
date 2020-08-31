@@ -74,7 +74,7 @@
             'Content-Type': 'application/json'
         },
         type: "POST",
-        url:"https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/addEmployeeStructure",
+        url:location.href.split('/Payroll')[0]+"/Payroll/employeeStructure/addEmployeeStructure",
         data :formData,
         success: function (response) {
          
@@ -285,7 +285,7 @@ xhttp.onreadystatechange = function() {
   }
   };
 
-  xhttp.open("POST", "https://payrollprojects0021312329trial.hanatrial.ondemand.com/Payroll/employeeStructure/addEmployeeStructure", true);
+  xhttp.open("POST", location.href.split('/Payroll')[0]+"/Payroll/employeeStructure/addEmployeeStructure", true);
   xhttp.setRequestHeader("Content-type", "application/json");
 
   xhttp.send(JSON.stringify(empObjectsArray));
